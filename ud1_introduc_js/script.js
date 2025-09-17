@@ -20,9 +20,15 @@ function pintar_ruta_v2(){
     console.log(substrng1 + substrng2);
 }
 
-//Ejercicio 4: Almacena y muestra por consola una variable que almacene el valor de 2*10^-9
+//Ejercicio 4
 function muestra_potencia(){
     var num = 2*Math.pow(10,-9);
     console.log("El valor de 2*10^-9 es: " + num);
 }
 
+//Ejercicio 5
+function distintas_bases(num){
+    //Transforma num a binario
+    var numDecimal = num.toString(2);
+    console.log("El número " + num + " en binario es: " + numDecimal);
+}
