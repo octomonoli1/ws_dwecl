@@ -76,3 +76,34 @@ function contar_y_temporizar(){
 
 }
 
+// Ejercicio 15
+function pedir_datos(){
+    let seguir = true;
+
+    while(seguir){
+        let nombre = prompt("Introduzca su nombre: ");
+        console.log("Hola " + nombre);
+        seguir = confirm("Desea continuar en el programa?"); //Confirm devuelve un valor boolean en función de la respuesta
+        console.log("Has decidido continuar? " + seguir);
+    }
+
+    console.log("FIN DEL PROGRAMA");
+}
+
+/* Ejercicio 16:  Realiza un programa que pida por pantalla tu edad, tu nombre, tu ciudad,  tu 
+dirección y tu teléfono y que al finalizar muestre un alerta dándote la enhorabuena si 
+la edad de tu cumpleaños elevado a 5 es igual a tu número de teléfono o si 
+simplemente tu ciudad es “Mairena del Alcor” */
+function datos_personales(){
+    let edad = document.getElementById("edad").value;
+    let nombre = document.getElementById("nombre").value;
+    let ciudad = document.getElementById("ciudad").value;
+    let direccion = document.getElementById("direccion").value;
+    let telefono = document.getElementById("telefono").value;
+
+    console.log("La información recogida es : " + edad + nombre + ciudad + direccion + telefono);
+
+    if(edad**5 === telefono || ciudad.toUpperCase() === "Mairena del alcor".toUpperCase()){
+        console.log("Enhorabuena!!!");
+    }
+}
