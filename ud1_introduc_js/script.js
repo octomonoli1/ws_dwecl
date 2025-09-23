@@ -32,3 +32,47 @@ function distintas_bases(num){
     var numDecimal = num.toString(2);
     console.log("El número " + num + " en binario es: " + numDecimal);
 }
+
+//Ejercicio 10
+function check_ambito_variable(){
+    let prueba = 5;
+    console.log("La variable prueba tiene como valor " + prueba);
+
+    {
+        var prueba2 = 10;
+        console.log("Insisto. La variable prueba tiene como valor " + prueba + " también dentro del bloque anidado");
+        console.log("Ademas, el bloque interior alberga la variable prueba2 que vale " + prueba2);
+    }
+
+    console.log("Por ultimo, desde el bloque principal, intento acceder al valor de una variable interna: " + prueba2);
+}
+
+//Ejercicio 11
+function definir_y_mostrar_array(){
+    var array = ["Alberto","Juan","Sofia"];
+
+    /*for(let i = 0; i < array.length; i ++){
+        console.log(array[i]);
+    }*/
+
+    console.table(array);
+}
+
+//Ejercicio 12
+function contar_y_temporizar(){
+
+    let valor = 0;
+
+    let initTime = new Date();
+
+    for(let i = 0; i < 10000000; i++){
+        valor += 10;
+    }
+
+    let endTime = new Date();
+
+    console.log("Valor: ", valor);
+    console.log("El algoritmo ha tardado " + ((endTime - initTime)/1000) + " segundos");
+
+}
+
