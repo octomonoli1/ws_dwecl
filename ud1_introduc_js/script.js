@@ -107,3 +107,16 @@ function datos_personales(){
         console.log("Enhorabuena!!!");
     }
 }
+
+/* Ejercicio 17: Haz un programa que dado un número de entrada cuente sus cifras y las muestre 
+por consola */
+function cuenta_cifras(){
+    let numero = Math.abs(prompt("Introduce un numero: "));
+    let cifras = 0;
+    while(numero >= 1){
+        cifras ++;
+        numero = numero / 10;
+    }
+
+    console.log("El numero tiene " + cifras + " cifras");
+}
