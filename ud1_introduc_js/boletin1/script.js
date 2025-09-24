@@ -175,13 +175,13 @@ function acierta_aleatorio(){
 
 }
 
-/* Ejercicio 20: Muestra por pantalla el número de múltiplos de N que existen entre 8 y 100 */
+/* Ejercicio 20: Muestra por pantalla el número de múltiplos de N que existen entre N y 100 */
 function imprime_multiplos(){
     let n = Number(prompt("Introduce un numero"));
     let multiplos = 0;
     const max = 100;
 
-    for(let i = n; i < max; i++){
+    for(let i = n+1; i < max; i++){
         if(i%n == 0){
             multiplos ++;
             console.log("Multiplo encontrado " + i);
