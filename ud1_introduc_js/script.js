@@ -120,3 +120,39 @@ function cuenta_cifras(){
 
     console.log("El numero tiene " + cifras + " cifras");
 }
+
+/* Ejercicio 18: Realiza un programa que dada tu edad indique si eres niño (0-16 años), joven (17-25 años), 
+adulto (26 - 60 años) o senior, en adelante. */
+function calcula_edad(){
+    let edad = document.getElementById("edad").value;
+    switch(true){
+        case edad >= 0 && edad <= 16: 
+            pintar_mensaje("Eres un niño", true);
+            break;
+        case edad > 16 && edad <=25: 
+            pintar_mensaje("Eres un joven", true);
+            break;
+        case edad >25 && edad <=60:
+            pintar_mensaje("Eres un adulto", true);
+            break;
+        case edad > 60:
+            pintar_mensaje("Eres senior", true);
+            break;
+        default :
+            pintar_mensaje("Error! Edad introducida no valida", false);
+            break;
+    }
+}
+
+function pintar_mensaje(mensaje, isOk){
+
+    let aviso = document.getElementById("aviso");
+    aviso.textContent = mensaje;
+
+    if(isOk){
+        aviso.style.color ="green";
+    }else{
+        aviso.style.color = "red";
+    }
+
+}
