@@ -100,3 +100,62 @@ function calcular_ec_2grado(){
         console.log("La solución de " + a + "x^2 + " + b + "x + " + c + " = 0 es (" + result1 + ", " + result2 + ")");
     }
 }
+
+function calcula_letra(){
+    //const letrasDni = "TRWAGMYFPDXBNJZSQVHLCKE"; En este caso se usaria charAt en lugar de []
+    const letrasDni = ["t", "r", "w", "a", "g", "m", "y", "f", "p", "d", "x", "b", "n", "j", "z", "s", "q", "v", "h", "l", "c", "k", "e"];
+    do{
+        var dniSinLetra = Number(prompt("Introduce los numeros de tu DNI: "));
+    }while(isNaN(dniSinLetra));
+    
+    console.log(letrasDni[dniSinLetra%23]);
+}
+
+function mostrar_menu(){
+    do{
+        var opt = window.prompt("Elige una opción: " 
+            + "\n\ta. Calcular el área de un triángulo"
+            + "\n\tb. Calcular el área de un rectángulo"
+            + "\n\tc. Calcular el área del círculo"
+            + "\n\td. Salir");
+
+            switch(opt){
+                case 'a': 
+                    area_triangulo();
+                    break;
+                case 'b': 
+                    area_rectangulo();
+                    break;
+                case 'c':
+                    area_circulo();
+                    break;
+                case 'd':
+                    console.log("Adios!");
+                    break;
+                default: 
+                     console.error("La opción introducida no es correcta");
+            }
+            
+    }while(opt != 'd' && opt != null);
+}
+
+function area_triangulo(){
+    let base = number(prompt("Introduce la base: "));
+    let altura = number(prompt("Introduce la altura: "));
+    
+    return (base*altura)/2;
+}
+
+function area_rectangulo(){
+    let lado1 = number(prompt("Introduce el lado 1: "));
+    let lado2 = number(prompt("Introduce el lado 2: "));
+
+    return lado1*lado2;
+}
+
+function area_circulo(){
+    let radio = number(prompt("Introduce el radio: "));
+
+    return Math.PI * Math.pow(radio,2);
+
+}
