@@ -62,3 +62,55 @@ function pinta_triangulo(){
     
     console.log(triangulo);
 }
+
+//Ejercicio 03
+function mostrar_menu(){
+
+    var numeros = [];
+
+    do{
+        var opt = prompt("Selecciona una opcion: ");
+        switch(opt.toLowerCase()){
+            case 'a':
+                numeros.push(introduce_num());
+                console.log("Numeros almacenados: ");
+                console.table(numeros);
+                break;
+            case 'b': 
+                calcula_max(numeros);
+                break;
+            case 'c': 
+                calcula_min(numeros);
+                break;
+            case 'd': 
+                calcula_avg(numeros);
+                break;
+            case 'e':
+                salir();
+                break;
+            default: 
+                console.error("Error! has introducido una opcion no valida");
+        }
+    }while(opt.toLowerCase() != 'e');
+}
+
+function introduce_num(){
+    do{
+        var num = Number(prompt("Introduce un numero"));
+        if(isNaN(num)){
+            console.error("Error! debe ser un numero");
+        }
+    }while(isNaN(num));
+    
+    return num;
+}
+
+function salir(){
+    console.log("Gracias por usar nuestro programa!");
+}
+
+function calcula_max(numeros){
+    let max = 0;
+    numeros.forEach(element => max = (element > max)? element: max);
+    console.log("El valor máximo es " + max);
+}
