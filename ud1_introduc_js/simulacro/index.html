@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <title>Simulacro POE</title>
+</head>
+<body>
+    <div class="ejercicio">
+        <h3>Ejercicio 01</h3>
+        <p> Diseña una función que determina si un año dado por parámetro es bisiesto. 
+            Un año es bisiesto si es divisible por 4 y por 100 salvo que aquellos que 
+            no lo son pero son divisibles por 400. Valida que el parámetro sea numérico </p>
+        <button onclick="ano_bisiesto()"> Es bisiesto </button>
+    </div>
+
+    <div class="ejercicio">
+        <h3>Ejercicio 02</h3>
+        <p> Diseña una función que dada una nota numérica devuelva su calificación 
+            cualitativa. Si la nota tiene parte decimal, quédate siempre con la parte 
+            entera e ignora el resto. Suspenso [0-5), Suficiente [5-6), Bien [6-7), 
+            Notable [7-9), Sobresaliente [9-10)</p>
+        <button onclick="calcula_calificacion()"> Calificación Cualitativa </button>
+    </div>
+
+    <div class="ejercicio">
+        <h3>Ejercicio 03</h3>
+        <p> Realiza una función generadora de contraseñas que reciba por parámetro un 
+            valor booleano que almacena si la contraseña será o no fuerte. 
+            Para ello, lo primero que haremos es pedir al usuario el número de caracteres 
+            que va a tener nuestra contraseña. Esto marcará la extensión de la misma. 
+            Dependiendo de si será debil (solo usa palabras) o fuerte (palabras, numeros 
+            y caracteres extraños) generará nuestra contraseña. Al finalizar debemos 
+            devolver la contraseña generada. Suponed, que los vectores globales con 
+            caracteres y palabras están definidos de la siguiente forma</p>
+            <ul>
+                <li>palabras = “abcdefghijklmnopqrstuvwxyz”;</li>
+                <li>caracteres = “1234567890()/=*#?”;</li>
+            </ul>
+        <button onclick="genera_pass(false)"> Generador de passwords </button>
+    </div>
+
+    <div class="ejercicio">
+        <h3>Ejercicio 04</h3>
+        <p> Realiza una función que implemente un sistema recursivo donde se obtenga 
+            la suma de los n primeros números</p>
+        <button onclick="suma_n_recursiva(3)"> Suma numeros </button>
+    </div>
+
+    <div class="ejercicio">
+        <h3>Ejercicio 04</h3>
+        <p> Dado el siguiente fragmento de código que calcula el salario final de un 
+            trabajador, teniendo en cuenta que para ello le suma al salario base las 
+            horas extra y su precio hora, un incentivo, y si, además su salario base 
+            es bajo y su incentivo alto aplica un bonus de 50, indica el/los errores 
+            y posibles mejoras que encuentres.</p>
+            <img width="500px" src="codigo_errores.png"/>
+            <table border="1" style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                    <th><b>Núm. Línea</b></th>
+                    <th><b>Descripción del error</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>&nbsp;</td>
+                    <td></td>
+                    </tr>
+                    <tr>
+                    <td>&nbsp;</td>
+                    <td></td>
+                    </tr>
+                    <tr>
+                    <td>&nbsp;</td>
+                    <td></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+
+</body>
+</html>
