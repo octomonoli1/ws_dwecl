@@ -34,6 +34,23 @@ function valida_form(){
     }
 }
 
+function ej3(){
+    let ventanaNueva = window.open("https:www.google.es","miVentana");
+    ventanaNueva?.document.write("<h1>TITULO NUEVO</h1>");
+}
+
+function redirect_to() : void{
+    const regexp = new RegExp("^https:\/\/");
+    const url = $inputValue("url");
+    if(regexp.test(url)){
+        window.location.href = url;
+    }else{
+        $writeNode("error2", "Por favor introduzca una URL válida");
+        setTimeout(() => $writeNode("error2",""), 5000);
+    }
+    
+}
+
 //Helpers (comunes para todo el boletín)
 function $inputValue(id: string) : string{
     const input = document.getElementById(id) as HTMLInputElement; //Lectura

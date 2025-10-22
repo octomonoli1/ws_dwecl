@@ -30,6 +30,21 @@ function valida_form() {
         $writeNode("error", "El email no cumple la expresion"); //Aqui tambien escribo
     }
 }
+function ej3() {
+    var ventanaNueva = window.open("https:www.google.es", "miVentana");
+    ventanaNueva === null || ventanaNueva === void 0 ? void 0 : ventanaNueva.document.write("<h1>TITULO NUEVO</h1>");
+}
+function redirect_to() {
+    var regexp = new RegExp("^https:\/\/");
+    var url = $inputValue("url");
+    if (regexp.test(url)) {
+        window.location.href = url;
+    }
+    else {
+        $writeNode("error2", "Por favor introduzca una URL válida");
+        setTimeout(function () { return $writeNode("error2", ""); }, 5000);
+    }
+}
 //Helpers (comunes para todo el boletín)
 function $inputValue(id) {
     var input = document.getElementById(id); //Lectura
