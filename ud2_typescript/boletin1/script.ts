@@ -46,7 +46,7 @@ function redirect_to() : void{
         window.location.href = url;
     }else{
         $writeNode("error2", "Por favor introduzca una URL válida");
-        setTimeout(() => $writeNode("error2",""), 5000);
+        window.setTimeout(() => $writeNode("error2",""), 5000);
     }
     
 }
@@ -71,3 +71,82 @@ function $writeNode (id: string, msg: string) : void {
     }
 
 }
+
+//Ejemplo de funciones normales y su definición corta (flecha)
+function suma1(a: number, b: number) : number{
+    const result = a + b;
+    return result;
+}
+
+const suma2 = (a: number, b:number) => a+b;
+
+suma1(5,5);
+suma2(1,2);
+
+//Uso de funciones predefinidas en JS que hagan uso de funciones flecha: filter,reduce,foreach,some,every
+const arrayPruebas = [2,4,6,8,10];
+
+//1.- Filter
+const arrayMayorCinco1 = [];
+for(let i = 0; i < arrayPruebas.length; i++){
+    if(arrayPruebas[i] > 5){
+        arrayMayorCinco1.push(arrayPruebas[i]);
+    }
+}
+
+const arrayMayorCinco2 = arrayPruebas.filter(data => data > 5);
+
+console.log(arrayMayorCinco1);
+console.log(arrayMayorCinco2);
+
+//2.- Map
+const arrayDoble1 = [];
+
+for(let i = 0; i < arrayPruebas.length; i++){
+    arrayDoble1.push(arrayPruebas[i]*2);
+}
+
+const arrayDoble2 = arrayPruebas.map(data => data*2);
+
+console.log(arrayDoble1);
+console.log(arrayDoble2);
+
+//2.a.- Combo entre filter y map (filtrado y transormación)
+const arrayMayorCincoYDoble = arrayPruebas
+    .filter(data => data > 5)
+    .map(data => data*2);
+
+console.log(arrayMayorCincoYDoble);
+
+let total1 = 0;
+for(let i = 0; i < arrayPruebas.length; i++){
+    total1 = total1 + arrayPruebas[i];
+}
+
+const total2 = arrayPruebas.reduce((acc, data) => acc + data);
+
+console.log(total1);
+console.log(total2);
+
+//3.- Foreach
+for(let i = 0; i < arrayPruebas.length; i++){
+    console.log("Este es el elemento " + (i+1) + ": " + arrayPruebas[i]);
+}
+
+arrayPruebas.forEach((data, i) => console.log("Este es el elemento " + (i+1) + ": " + data));
+
+//4.- Some
+console.log(arrayPruebas.some(data => data > 8));
+
+//5.- Every
+console.log(arrayPruebas.every(data => data > 0));
+
+//Definir una función propia donde uno de sus parametros sea una función
+function resuelve_operacion(callback: (a:number,b: number) => number, a:number,  b:number){
+    console.log("Aqui todavia no he calculado la operacion");
+    const result = callback(a,b);
+    console.log("Aqui ya la he calculado y es: "  + result);
+    return result;
+}
+
+console.log(resuelve_operacion((a,b)=>a/b,10,5));

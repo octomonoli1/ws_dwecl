@@ -42,7 +42,7 @@ function redirect_to() {
     }
     else {
         $writeNode("error2", "Por favor introduzca una URL válida");
-        setTimeout(function () { return $writeNode("error2", ""); }, 5000);
+        window.setTimeout(function () { return $writeNode("error2", ""); }, 5000);
     }
 }
 //Helpers (comunes para todo el boletín)
@@ -60,3 +60,60 @@ function $writeNode(id, msg) {
         nodo.textContent = msg;
     }
 }
+//Ejemplo de funciones normales y su definición corta (flecha)
+function suma1(a, b) {
+    var result = a + b;
+    return result;
+}
+var suma2 = function (a, b) { return a + b; };
+suma1(5, 5);
+suma2(1, 2);
+//Uso de funciones predefinidas en JS que hagan uso de funciones flecha: filter,reduce,foreach,some,every
+var arrayPruebas = [2, 4, 6, 8, 10];
+//1.- Filter
+var arrayMayorCinco1 = [];
+for (var i = 0; i < arrayPruebas.length; i++) {
+    if (arrayPruebas[i] > 5) {
+        arrayMayorCinco1.push(arrayPruebas[i]);
+    }
+}
+var arrayMayorCinco2 = arrayPruebas.filter(function (data) { return data > 5; });
+console.log(arrayMayorCinco1);
+console.log(arrayMayorCinco2);
+//2.- Map
+var arrayDoble1 = [];
+for (var i = 0; i < arrayPruebas.length; i++) {
+    arrayDoble1.push(arrayPruebas[i] * 2);
+}
+var arrayDoble2 = arrayPruebas.map(function (data) { return data * 2; });
+console.log(arrayDoble1);
+console.log(arrayDoble2);
+//2.a.- Combo entre filter y map (filtrado y transormación)
+var arrayMayorCincoYDoble = arrayPruebas
+    .filter(function (data) { return data > 5; })
+    .map(function (data) { return data * 2; });
+console.log(arrayMayorCincoYDoble);
+var total1 = 0;
+for (var i = 0; i < arrayPruebas.length; i++) {
+    total1 = total1 + arrayPruebas[i];
+}
+var total2 = arrayPruebas.reduce(function (acc, data) { return acc + data; });
+console.log(total1);
+console.log(total2);
+//3.- Foreach
+for (var i = 0; i < arrayPruebas.length; i++) {
+    console.log("Este es el elemento " + (i + 1) + ": " + arrayPruebas[i]);
+}
+arrayPruebas.forEach(function (data, i) { return console.log("Este es el elemento " + (i + 1) + ": " + data); });
+//4.- Some
+console.log(arrayPruebas.some(function (data) { return data > 8; }));
+//5.- Every
+console.log(arrayPruebas.every(function (data) { return data > 0; }));
+//Definir una función propia donde uno de sus parametros sea una función
+function resuelve_operacion(callback, a, b) {
+    console.log("Aqui todavia no he calculado la operacion");
+    var result = callback(a, b);
+    console.log("Aqui ya la he calculado y es: " + result);
+    return result;
+}
+console.log(resuelve_operacion(function (a, b) { return a / b; }, 10, 5));
