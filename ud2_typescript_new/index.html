@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h2>Formulario</h2>
+    <form action="/">
+        <label for="email" >Email: </label>
+        <input id="email" placeholder="example@dominio.extension"/>
+        <p id="error" style="color: red"></p>
+        <p id="ok" style="color: green"></p>
+    </form>
+    <button onclick="valida_email()">Validar</button>
+    <h2>Navega</h2>
+    <form action="/">
+        <label for="url" >URL: </label>
+        <input id="url" placeholder="http://www.url_destino.com"/>
+        <p id="error2" style="color: red"></p>
+    </form>
+    <button onclick="navegar_url()">Ir</button>
+    <h2>Lista de elementos</h2>
+    <ul id="lista_alumnos">
+        <li>Paco Lopez</li>
+        <li>María Martín</li>
+        <li>Antonio Santos</li>
+    </ul>
+    <form>
+        <label for="name">Alumno: </label>
+        <input id="name" type="text" placeholder="Nombre completo alumno"/>
+    </form>
+    <button onclick="lee_elementos()">Lee elementos</button>
+    <button onclick="add_elemento()">Añadir alumno</button>
+
+</body>
+</html>
