@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <p id="reloj"></p>
     <h1 id="titulo">Hola Mundo</h1>
     <button onclick="cambiar_titulo()">Cambiar titulo</button>
     <h1>Modo oscuro</h1>
@@ -17,5 +18,35 @@
     </form>
     <ol id="resultado"></ol>
     <button onclick="analiza_edad()">Enviar edad</button>
+    <h1 >Saludo</h1>
+    <button onclick="cambiar_nombre()">Cambiar nombre</button>
+    <form>
+        <select id="color" onchange="cambiar_color()">
+            <option value="red">Rojo</option>
+            <option value="green">Verde</option>
+            <option value="blue">Azul</option>
+            <option value="yellow">Amarillo</option>
+        </select>
+    </form>
+    <h1 >Info Navegador</h1>
+    <p>Selecciona la opción que deseas consultar: </p>
+    <ol type="a">
+        <li>El idioma del navegador</li>
+        <li>El nombre del navegador</li>
+        <li>¿Están habilitadas las cookies?</li>
+        <li>Tamaño (alto y ancho) pantalla</li>
+    </ol>
+    <form>
+        <input id="option" type="text" placeholder="opt"/>
+    </form>
+    <button onclick="info_navegador()">Info</button>
+    <h1 >Mini navegador</h1>
+    <form>
+        <input type="text" id="url"/>
+    </form>
+    <button onclick="window.history.go(1)">-></button>
+    <button onclick="window.history.go(-1)"><-</button>
+    <button onclick="window.location.reload">F5</button>
+    <button onclick="navegar()">Ir</button>
 </body>
 </html>
