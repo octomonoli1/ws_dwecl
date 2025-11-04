@@ -7,7 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <p id="reloj"></p>
     <h1 id="titulo">Hola Mundo</h1>
     <button onclick="cambiar_titulo()">Cambiar titulo</button>
     <h1>Modo oscuro</h1>
@@ -48,5 +47,23 @@
     <button onclick="window.history.go(-1)"><-</button>
     <button onclick="window.location.reload">F5</button>
     <button onclick="navegar()">Ir</button>
+    <p id="reloj"></p>
+
+    <h1>Lista compra</h1>
+    <ol type="1" id="shopping-list">
+        <li>Huevos</li>
+        <li>Pan</li>
+        <li>Leche</li>
+        <li>Arroz</li>
+    </ol>
+    <div id="controles">
+        <button onclick="count_elements()"> Contar elementos </button>
+        <button onclick="add_element()"> Añadir producto</button>
+        <button onclick="show_first_last_element()"> Mostrar 1 y Ult. Elemento</button>
+        <button onclick="duplicate_element()"> Duplicar producto</button>
+        <button onclick="edit_element()"> Editar producto</button>
+        <button onclick="show_elements()"> Mostrar productos</button>
+    </div>
+
 </body>
 </html>

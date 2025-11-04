@@ -1,3 +1,12 @@
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 function cambiar_titulo() {
     var titulo = prompt("Introduce un nuevo titulo: ");
     var nodoTitulo = document.getElementById("titulo");
@@ -107,21 +116,17 @@ function idioma_navegador() {
 function nombre_navegador() {
     var userAgent = window.navigator.userAgent;
     var navegador = "Desconocido";
-    if (userAgent.includes("Chrome") && !userAgent.includes("Edg") && !userAgent.includes("OPR")) {
+    /*if (userAgent.includes("Chrome") && !userAgent.includes("Edg") && !userAgent.includes("OPR")) {
         navegador = "Chrome";
-    }
-    else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) {
+    } else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) {
         navegador = "Safari";
-    }
-    else if (userAgent.includes("Firefox")) {
+    } else if (userAgent.includes("Firefox")) {
         navegador = "Firefox";
-    }
-    else if (userAgent.includes("Edg")) {
+    } else if (userAgent.includes("Edg")) {
         navegador = "Edge";
-    }
-    else if (userAgent.includes("OPR") || userAgent.includes("Opera")) {
+    } else if (userAgent.includes("OPR") || userAgent.includes("Opera")) {
         navegador = "Opera";
-    }
+    }*/
     console.log("Nombre navegador: " + navegador);
 }
 function cookies_navegador() {
@@ -136,12 +141,57 @@ function actualizar_reloj() {
     var reloj = document.getElementById("reloj");
     reloj.textContent = hora;
 }
-window.onload = function () { return setInterval(actualizar_reloj, 1000); };
+window.onload = function () {
+    setInterval(actualizar_reloj, 1000);
+};
 function navegar() {
     var inputUrl = document.getElementById("url");
     var url = inputUrl.value;
-    if (!url.includes("https://")) {
-        url = "https:\\" + url;
-    }
+    url = "https:\\" + url;
     window.location.href = url;
+}
+function count_elements() {
+    var list = document.getElementById("shopping-list");
+    console.log("Hay " + list.childElementCount + " elementos ");
+}
+function add_element() {
+    var new_element = document.createElement("li");
+    new_element.textContent = window.prompt("Introduce el nuevo elemento ");
+    var list = document.getElementById("shopping-list");
+    list.appendChild(new_element);
+}
+function show_first_last_element() {
+    var _a, _b;
+    var list = document.getElementById("shopping-list");
+    console.log("Primer elemento: " + ((_a = list.firstElementChild) === null || _a === void 0 ? void 0 : _a.textContent));
+    console.log("Ultimo elemento: " + ((_b = list.lastElementChild) === null || _b === void 0 ? void 0 : _b.textContent));
+}
+function duplicate_element() {
+    //Obtenemos el nodo padre <ol>
+    var list = document.getElementById("shopping-list");
+    var id = Number(window.prompt("Dime el producto a duplicar"));
+    var childs = [];
+    for (var i = 0; i < list.childElementCount; i++) {
+        childs.push(list.children[i]);
+    }
+    var dupl = document.createElement("li");
+    dupl.textContent = childs[id - 1].textContent;
+    list.appendChild(dupl);
+}
+function edit_element() {
+    //Obtenemos el nodo padre <ol>
+    var list = document.getElementById("shopping-list");
+    var id = Number(window.prompt("Dime el producto a duplicar"));
+    var text = window.prompt("Dime el nuevo valor ");
+    var childs = [];
+    for (var i = 0; i < list.childElementCount; i++) {
+        childs.push(list.children[i]);
+    }
+    childs[id - 1].textContent = text;
+}
+function show_elements() {
+    var list = document.getElementById("shopping-list");
+    var childs = __spreadArray([], list.children, true).map(function (child) { return child; });
+    //Funcion flecha para recorrer y mostrar
+    childs.forEach(function (element) { return console.log(element.textContent); });
 }

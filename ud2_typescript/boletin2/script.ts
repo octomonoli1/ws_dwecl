@@ -132,7 +132,7 @@ function nombre_navegador() : void {
     let userAgent: string = window.navigator.userAgent as string;
     let navegador = "Desconocido";
 
-    if (userAgent.includes("Chrome") && !userAgent.includes("Edg") && !userAgent.includes("OPR")) {
+    /*if (userAgent.includes("Chrome") && !userAgent.includes("Edg") && !userAgent.includes("OPR")) {
         navegador = "Chrome";
     } else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) {
         navegador = "Safari";
@@ -142,7 +142,7 @@ function nombre_navegador() : void {
         navegador = "Edge";
     } else if (userAgent.includes("OPR") || userAgent.includes("Opera")) {
         navegador = "Opera";
-    }
+    }*/
 
     console.log("Nombre navegador: " + navegador);
 }
@@ -162,15 +162,74 @@ function actualizar_reloj(): void{
     reloj.textContent = hora;
 }
 
-window.onload = () => setInterval(actualizar_reloj, 1000);
+window.onload = () => {
+    setInterval(actualizar_reloj, 1000);
+}
 
 function navegar(){
     let inputUrl: HTMLInputElement = document.getElementById("url") as HTMLInputElement;
     let url: string = inputUrl.value;
 
-    if(!url.includes("https://")){
-        url = "https:\\" + url;
+    url = "https:\\" + url;
+    window.location.href = url;
+}
+
+function count_elements(){
+    let list : HTMLOListElement = document.getElementById("shopping-list") as HTMLOListElement;
+    console.log("Hay " + list.childElementCount + " elementos ");
+}
+
+function add_element(){
+    let new_element: HTMLLIElement = document.createElement("li") as HTMLLIElement;
+    new_element.textContent = window.prompt("Introduce el nuevo elemento ") as string;
+    let list : HTMLOListElement = document.getElementById("shopping-list") as HTMLOListElement;
+    list.appendChild(new_element);
+}
+
+function show_first_last_element(){
+    let list : HTMLOListElement = document.getElementById("shopping-list") as HTMLOListElement;
+
+    console.log("Primer elemento: " + list.firstElementChild?.textContent);
+    console.log("Ultimo elemento: " + list.lastElementChild?.textContent);
+}
+
+function duplicate_element(){
+
+    //Obtenemos el nodo padre <ol>
+    let list : HTMLOListElement = document.getElementById("shopping-list") as HTMLOListElement;
+
+    let id: number = Number(window.prompt("Dime el producto a duplicar"));
+
+    const childs: HTMLLIElement[] = [];
+    for(let i = 0; i < list.childElementCount; i++){
+        childs.push(list.children[i] as HTMLLIElement);
     }
 
-    window.location.href = url;
+    let dupl: HTMLLIElement = document.createElement("li");
+    dupl.textContent = childs[id-1].textContent
+    list.appendChild(dupl);
+}
+
+function edit_element(){
+
+    //Obtenemos el nodo padre <ol>
+    let list : HTMLOListElement = document.getElementById("shopping-list") as HTMLOListElement;
+
+    let id: number = Number(window.prompt("Dime el producto a duplicar"));
+    let text: string = window.prompt("Dime el nuevo valor " ) as string;
+
+    const childs: HTMLLIElement[] = [];
+    for(let i = 0; i < list.childElementCount; i++){
+        childs.push(list.children[i] as HTMLLIElement);
+    }
+
+    childs[id-1].textContent = text;
+}
+
+function show_elements(){
+    let list : HTMLOListElement = document.getElementById("shopping-list") as HTMLOListElement;
+    const childs: HTMLLIElement[] = [...list.children].map(child => child as HTMLLIElement);
+
+    //Funcion flecha para recorrer y mostrar
+    childs.forEach(element => console.log(element.textContent));
 }
