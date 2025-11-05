@@ -11,6 +11,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 window.onload = function () {
     setInterval(actualizar_reloj, 1000);
     cuadricula_alumnos();
+    ej_cookies();
 };
 function cambiar_titulo() {
     var titulo = prompt("Introduce un nuevo titulo: ");
@@ -205,6 +206,12 @@ function cuadricula_alumnos() {
     }*/
     alumnos.forEach(function (alumno) { return container.appendChild(crea_ficha(alumno)); });
 }
+function crear_nuevo_alumno() {
+    var nombre = prompt("Introduce el nombre del alumno");
+    var container = document.getElementById("contenedor2");
+    var ficha = crea_ficha(nombre);
+    container.appendChild(ficha);
+}
 function crea_ficha(alumno) {
     var ficha = document.createElement("div");
     ficha.textContent = alumno;
@@ -236,4 +243,25 @@ function color_aleatorio() {
     ];
     var idxAleat = Math.floor(Math.random() * coloresPastel.length) + 1;
     return coloresPastel[idxAleat];
+}
+function ej_cookies() {
+    //Escribir cookie
+    var cookieIdioma = "lang=ES";
+    var cookieCurrency = "currency=EUR";
+    document.cookie = cookieIdioma;
+    document.cookie = cookieCurrency;
+    //Leer cookies
+    var arrayCookies = document.cookie.split("; ");
+    arrayCookies.forEach(function (cookie) { return console.log("Cookie: " + cookie); });
+    //Leemos una en concreto (lang)
+    var cookieAbuscar = window.prompt("Que cookie quieres consultar");
+    var valor = "";
+    for (var i = 0; i < arrayCookies.length; i++) {
+        var claveValor = arrayCookies[i].split("=");
+        console.log(claveValor);
+        if (claveValor[0].trim() == cookieAbuscar) {
+            valor = claveValor[1];
+        }
+    }
+    console.log("El valor de la cookie " + cookieAbuscar + " es " + valor);
 }

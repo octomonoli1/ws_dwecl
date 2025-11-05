@@ -2,6 +2,7 @@
 window.onload = () => {
     setInterval(actualizar_reloj, 1000);
     cuadricula_alumnos();
+    ej_cookies();
 }
 
 function cambiar_titulo(){
@@ -228,7 +229,7 @@ function edit_element(){
     childs[id-1].textContent = text;
 }
 
-function show_elements(){
+function show_elements(): void{
     let list : HTMLOListElement = document.getElementById("shopping-list") as HTMLOListElement;
     const childs: HTMLLIElement[] = [...list.children].map(child => child as HTMLLIElement);
 
@@ -236,15 +237,21 @@ function show_elements(){
     childs.forEach(element => console.log(element.textContent));
 }
 
-function cuadricula_alumnos(){
+function cuadricula_alumnos(): void{
     let container: HTMLDivElement = document.getElementById("contenedor2") as HTMLDivElement;
     let alumnos: string[] = ["Fran","Xexu","Canijo","Salvador","Vanesa","Raquel","Emilio","Javier","Amanda","Maria"];
-
     /*for(let i = 0; i < alumnos.length; i++){
         container.appendChild(crea_ficha(alumnos[i]));
     }*/
 
     alumnos.forEach(alumno => container.appendChild(crea_ficha(alumno)));
+}
+
+function crear_nuevo_alumno(): void{
+    let nombre: string = prompt("Introduce el nombre del alumno") as string;
+    let container: HTMLDivElement = document.getElementById("contenedor2") as HTMLDivElement;
+    let ficha: HTMLDivElement = crea_ficha(nombre);
+    container.appendChild(ficha);
 }
 
 function crea_ficha(alumno: string): HTMLDivElement{
@@ -280,4 +287,30 @@ function color_aleatorio(): string{
 
         const idxAleat = Math.floor(Math.random() * coloresPastel.length) +1;
         return coloresPastel[idxAleat];
+}
+
+function ej_cookies(){
+
+    //Escribir cookie
+    let cookieIdioma: string = "lang=ES";
+    let cookieCurrency: string = "currency=EUR";
+    document.cookie = cookieIdioma;
+    document.cookie = cookieCurrency;
+
+    //Leer cookies
+    let arrayCookies: string[] = document.cookie.split("; ");
+    arrayCookies.forEach(cookie => console.log("Cookie: " + cookie));
+
+    //Leemos una en concreto (lang)
+    let cookieAbuscar: string = window.prompt("Que cookie quieres consultar") as string;
+    let valor: string = "";
+    for(let i = 0; i < arrayCookies.length; i++){
+        let claveValor = arrayCookies[i].split("=");
+        console.log(claveValor);
+        if(claveValor[0].trim() == cookieAbuscar){
+            valor = claveValor[1];
+        }
+    }
+
+    console.log("El valor de la cookie " + cookieAbuscar + " es " + valor);
 }
