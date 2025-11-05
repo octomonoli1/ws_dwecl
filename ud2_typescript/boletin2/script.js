@@ -264,4 +264,8 @@ function ej_cookies() {
         }
     }
     console.log("El valor de la cookie " + cookieAbuscar + " es " + valor);
+    //Elimiar automaticamente con fecha expiracion
+    var date = new Date();
+    date.setSeconds(date.getSeconds() + 30000);
+    document.cookie = "expires=" + date.toUTCString();
 }
