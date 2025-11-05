@@ -1,3 +1,9 @@
+//Esto se lanza siempre cuando carga todo el HTML
+window.onload = () => {
+    setInterval(actualizar_reloj, 1000);
+    cuadricula_alumnos();
+}
+
 function cambiar_titulo(){
     let titulo: string = prompt("Introduce un nuevo titulo: ") as string;
     let nodoTitulo: HTMLHeadingElement = document.getElementById("titulo") as HTMLHeadingElement;
@@ -162,10 +168,6 @@ function actualizar_reloj(): void{
     reloj.textContent = hora;
 }
 
-window.onload = () => {
-    setInterval(actualizar_reloj, 1000);
-}
-
 function navegar(){
     let inputUrl: HTMLInputElement = document.getElementById("url") as HTMLInputElement;
     let url: string = inputUrl.value;
@@ -232,4 +234,50 @@ function show_elements(){
 
     //Funcion flecha para recorrer y mostrar
     childs.forEach(element => console.log(element.textContent));
+}
+
+function cuadricula_alumnos(){
+    let container: HTMLDivElement = document.getElementById("contenedor2") as HTMLDivElement;
+    let alumnos: string[] = ["Fran","Xexu","Canijo","Salvador","Vanesa","Raquel","Emilio","Javier","Amanda","Maria"];
+
+    /*for(let i = 0; i < alumnos.length; i++){
+        container.appendChild(crea_ficha(alumnos[i]));
+    }*/
+
+    alumnos.forEach(alumno => container.appendChild(crea_ficha(alumno)));
+}
+
+function crea_ficha(alumno: string): HTMLDivElement{
+        let ficha: HTMLDivElement = document.createElement("div");
+        ficha.textContent = alumno;
+        ficha.style.backgroundColor = color_aleatorio();
+        return ficha;
+}
+
+function color_aleatorio(): string{
+    const coloresPastel = [
+        "#FFB3BA", // rosa pastel
+        "#FFDFBA", // durazno
+        "#FFFFBA", // amarillo pastel
+        "#BAFFC9", // verde menta
+        "#BAE1FF", // azul bebé
+        "#E0BBE4", // lila
+        "#F3C6E7", // rosa suave
+        "#C1FFD7", // verde pastel claro
+        "#B0E0E6", // azul pastel
+        "#FFD1DC", // rosa bubblegum
+        "#FFE4B5", // melocotón suave
+        "#D5E8D4", // verde menta claro
+        "#FBE7C6", // beige pastel
+        "#E3F2FD", // azul celeste
+        "#FADADD", // rosa pálido
+        "#FFFACD", // limón suave
+        "#D8BFD8", // lavanda
+        "#C3FDB8", // verde claro
+        "#E6E6FA", // lavanda muy suave
+        "#FFCCE5"  // rosa chicle pastel
+        ];
+
+        const idxAleat = Math.floor(Math.random() * coloresPastel.length) +1;
+        return coloresPastel[idxAleat];
 }

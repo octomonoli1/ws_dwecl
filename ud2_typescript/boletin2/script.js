@@ -7,6 +7,11 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
+//Esto se lanza siempre cuando carga todo el HTML
+window.onload = function () {
+    setInterval(actualizar_reloj, 1000);
+    cuadricula_alumnos();
+};
 function cambiar_titulo() {
     var titulo = prompt("Introduce un nuevo titulo: ");
     var nodoTitulo = document.getElementById("titulo");
@@ -141,9 +146,6 @@ function actualizar_reloj() {
     var reloj = document.getElementById("reloj");
     reloj.textContent = hora;
 }
-window.onload = function () {
-    setInterval(actualizar_reloj, 1000);
-};
 function navegar() {
     var inputUrl = document.getElementById("url");
     var url = inputUrl.value;
@@ -194,4 +196,44 @@ function show_elements() {
     var childs = __spreadArray([], list.children, true).map(function (child) { return child; });
     //Funcion flecha para recorrer y mostrar
     childs.forEach(function (element) { return console.log(element.textContent); });
+}
+function cuadricula_alumnos() {
+    var container = document.getElementById("contenedor2");
+    var alumnos = ["Fran", "Xexu", "Canijo", "Salvador", "Vanesa", "Raquel", "Emilio", "Javier", "Amanda", "Maria"];
+    /*for(let i = 0; i < alumnos.length; i++){
+        container.appendChild(crea_ficha(alumnos[i]));
+    }*/
+    alumnos.forEach(function (alumno) { return container.appendChild(crea_ficha(alumno)); });
+}
+function crea_ficha(alumno) {
+    var ficha = document.createElement("div");
+    ficha.textContent = alumno;
+    ficha.style.backgroundColor = color_aleatorio();
+    return ficha;
+}
+function color_aleatorio() {
+    var coloresPastel = [
+        "#FFB3BA", // rosa pastel
+        "#FFDFBA", // durazno
+        "#FFFFBA", // amarillo pastel
+        "#BAFFC9", // verde menta
+        "#BAE1FF", // azul bebé
+        "#E0BBE4", // lila
+        "#F3C6E7", // rosa suave
+        "#C1FFD7", // verde pastel claro
+        "#B0E0E6", // azul pastel
+        "#FFD1DC", // rosa bubblegum
+        "#FFE4B5", // melocotón suave
+        "#D5E8D4", // verde menta claro
+        "#FBE7C6", // beige pastel
+        "#E3F2FD", // azul celeste
+        "#FADADD", // rosa pálido
+        "#FFFACD", // limón suave
+        "#D8BFD8", // lavanda
+        "#C3FDB8", // verde claro
+        "#E6E6FA", // lavanda muy suave
+        "#FFCCE5" // rosa chicle pastel
+    ];
+    var idxAleat = Math.floor(Math.random() * coloresPastel.length) + 1;
+    return coloresPastel[idxAleat];
 }
