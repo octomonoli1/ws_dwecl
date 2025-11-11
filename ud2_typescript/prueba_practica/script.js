@@ -1,3 +1,6 @@
+window.onload = function () {
+    cargar_datos_cookie();
+};
 function ejectuar_accion() {
     var select = document.getElementById("opcion");
     switch (select.value) {
@@ -78,4 +81,7 @@ function mensaje_error() {
     errorParagraph.style.color = "red";
     errorParagraph.style.fontWeight = "bold";
     result.appendChild(errorParagraph);
+}
+function cargar_datos_cookie() {
+    console.log("Aqui va el desarrollo de las cookies");
 }

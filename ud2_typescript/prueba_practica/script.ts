@@ -1,3 +1,7 @@
+window.onload = () => {
+    cargar_datos_cookie();
+}
+
 function ejectuar_accion(): void{
     let select: HTMLSelectElement = document.getElementById("opcion") as HTMLSelectElement;
     switch(select.value){
@@ -82,4 +86,8 @@ function mensaje_error(): void{
     errorParagraph.style.color = "red";
     errorParagraph.style.fontWeight = "bold";
     result.appendChild(errorParagraph);
+}
+
+function cargar_datos_cookie(): void{
+    console.log("Aqui va el desarrollo de las cookies");
 }
