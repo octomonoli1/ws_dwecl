@@ -36,11 +36,34 @@ function invertir_nombre() {
 }
 function redirigir_red_social() {
     var inputUrl = $inputById("url");
+    var inputApellidos = $inputById("apellidos");
+    var regExp = new RegExp("^https:\/\/");
+    if (regExp.test(inputUrl.value)) {
+        //Redirige
+        var apellido = inputApellidos.value.split(" ")[0];
+        var direccion = inputUrl.value + "/search?q=" + apellido;
+        window.location.href = direccion;
+    }
+    else {
+        //Muestra error
+        mensaje_error();
+    }
 }
 function calcula_edad() {
-    var inputEdad = $inputById("edad");
+    var inputEdad = $inputById("fecha_nac");
+    var result = document.getElementById("result");
+    var fechaNacimineto = inputEdad.valueAsDate;
+    var fechaActual = new Date();
+    var edadCalculada = fechaActual.getFullYear() - fechaNacimineto.getFullYear();
+    result.textContent = "Tienes " + edadCalculada + " años.";
 }
 function almacena_cookies() {
+    document.cookie = "nombre=" + $inputById("nombre").value;
+    document.cookie = "apellidos=" + $inputById("apellidos").value;
+    document.cookie = "edad=" + $inputById("edad").value;
+    document.cookie = "telefono=" + $inputById("telefono").value;
+    document.cookie = "fechaNac=" + $inputById("fecha_nac").value;
+    document.cookie = "url=" + $inputById("url").value;
 }
 //Helpers
 function $inputById(id) {
@@ -51,5 +74,8 @@ function mensaje_error() {
     var result = document.getElementById("result");
     result.textContent = "";
     var errorParagraph = document.createElement("p");
-    errorParagraph.textContent = "";
+    errorParagraph.textContent = "Debe incluir la cabecera https";
+    errorParagraph.style.color = "red";
+    errorParagraph.style.fontWeight = "bold";
+    result.appendChild(errorParagraph);
 }

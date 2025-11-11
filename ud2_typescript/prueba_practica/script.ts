@@ -23,7 +23,7 @@ function invertir_nombre(): void{
     let inputNombre: HTMLInputElement = $inputById("nombre");3
     let inputFecha: HTMLInputElement = $inputById("fecha_nac");
     let result: HTMLDivElement = document.getElementById("result") as HTMLDivElement;
-    let nombreAlreves = "";
+    let nombreAlreves: string = "";
     //Funcion comunidad JS: inputNombre.value.split("").reverse().join("");
     for(let i: number = inputNombre.value.length -1 ; i >= 0 ; i --){
         nombreAlreves += inputNombre.value[i];
@@ -36,15 +36,36 @@ function invertir_nombre(): void{
 
 function redirigir_red_social(): void{
     let inputUrl: HTMLInputElement = $inputById("url");
+    let inputApellidos: HTMLInputElement = $inputById("apellidos");
+    let regExp: RegExp = new RegExp("^https:\/\/");
+    if(regExp.test(inputUrl.value)){
+        //Redirige
+        let apellido: string = inputApellidos.value.split(" ")[0];
+        let direccion: string = inputUrl.value + "/search?q=" + apellido;
+        window.location.href= direccion;
+    }else{
+        //Muestra error
+        mensaje_error();
+    }
+
 }
 
 function calcula_edad(): void{
-    let inputEdad: HTMLInputElement = $inputById("edad");
-    
+    let inputEdad: HTMLInputElement = $inputById("fecha_nac");
+    const result: HTMLDivElement = document.getElementById("result") as HTMLDivElement;
+    let fechaNacimineto: Date = inputEdad.valueAsDate as Date;
+    let fechaActual: Date = new Date();
+    let edadCalculada: number = fechaActual.getFullYear() - fechaNacimineto.getFullYear();
+    result.textContent = "Tienes " + edadCalculada + " años.";
 }
 
 function almacena_cookies(): void{
-    
+    document.cookie = "nombre=" + $inputById("nombre").value;
+    document.cookie = "apellidos=" + $inputById("apellidos").value;
+    document.cookie = "edad=" + $inputById("edad").value;
+    document.cookie = "telefono=" + $inputById("telefono").value;
+    document.cookie = "fechaNac=" + $inputById("fecha_nac").value;
+    document.cookie = "url=" + $inputById("url").value;
 }
 
 //Helpers
@@ -57,5 +78,8 @@ function mensaje_error(): void{
     const result: HTMLDivElement = document.getElementById("result") as HTMLDivElement;
     result.textContent = "";
     let errorParagraph: HTMLParagraphElement = document.createElement("p") as HTMLParagraphElement;
-    errorParagraph.textContent = ""
+    errorParagraph.textContent = "Debe incluir la cabecera https";
+    errorParagraph.style.color = "red";
+    errorParagraph.style.fontWeight = "bold";
+    result.appendChild(errorParagraph);
 }
