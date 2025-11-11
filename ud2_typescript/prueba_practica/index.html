@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <title>Prueba práctica</title>
+</head>
+<body>
+    <h1>Formulario Recogida Información usuario</h1>
+    <form>
+        <label for="nombre">Nombre: </label>
+        <input type="text" id="nombre"/><br/>
+        <label for="apellidos">Apellidos: </label>
+        <input type="text" id="apellidos"/><br/>
+        <label for="edad">Edad: </label>
+        <input type="number" id="edad"/><br/>
+        <label for="telefono">Telefono: </label>
+        <input type="tel" id="telefono"/><br/>
+        <label for="fecha_nac">Fecha de nacimiento: </label>
+        <input type="date" id="fecha_nac"/><br/>
+        <label for="url">Linkedin/Infojobs: </label>
+        <input type="url" id="url"/><br/>
+        <label for="nombre">Selecciona la accion: </label>
+        <select id="opcion">
+            <option value="reves">Nombre al reves</option>
+            <option value="redirect">Redirigir Red Social</option>
+            <option value="edad">Calcular edad</option>
+            <option value="cookies">Guardar datos cookie</option>
+        </select><br/>
+    </form>
+
+    <div id="result" style="background-color: lightgray; padding: 1em;">
+        Sin contenido
+    </div>
+
+    <button onclick="ejectuar_accion()">Enviar Formulario</button>
+</body>
+</html>
