@@ -72,6 +72,18 @@ function almacena_cookies() {
 function $inputById(id) {
     return document.getElementById(id);
 }
+function $getCookieByKey(key) {
+    var arrayCookie = document.cookie.split(";");
+    var result = "";
+    for (var i = 0; i < arrayCookie.length; i++) {
+        var clave = arrayCookie[i].split("=")[0];
+        var valor = arrayCookie[i].split("=")[1];
+        if (clave.trim() == key) {
+            result = valor;
+        }
+    }
+    return result;
+}
 //Para despues
 function mensaje_error() {
     var result = document.getElementById("result");
@@ -83,5 +95,13 @@ function mensaje_error() {
     result.appendChild(errorParagraph);
 }
 function cargar_datos_cookie() {
-    console.log("Aqui va el desarrollo de las cookies");
+    $inputById("nombre").placeholder = $getCookieByKey("nombre");
+    $inputById("apellidos").placeholder = $getCookieByKey("apellidos");
+    $inputById("edad").placeholder = $getCookieByKey("edad");
+    $inputById("telefono").placeholder = $getCookieByKey("telefono");
+    $inputById("fecha_nac").placeholder = $getCookieByKey("fecha_nac");
+    $inputById("url").placeholder = $getCookieByKey("url");
+}
+function actualizar_web() {
+    window.location.reload();
 }

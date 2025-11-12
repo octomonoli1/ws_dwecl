@@ -77,6 +77,20 @@ function $inputById(id: string): HTMLInputElement{
     return document.getElementById(id) as HTMLInputElement;
 }
 
+function $getCookieByKey(key: string): string{
+    let arrayCookie = document.cookie.split(";");
+    let result = "";
+    for(let i = 0; i < arrayCookie.length; i++){
+        let clave = arrayCookie[i].split("=")[0];
+        let valor = arrayCookie[i].split("=")[1];
+        if(clave.trim() == key){
+            result = valor;
+        }
+    }
+
+    return result;
+}
+
 //Para despues
 function mensaje_error(): void{
     const result: HTMLDivElement = document.getElementById("result") as HTMLDivElement;
@@ -89,5 +103,14 @@ function mensaje_error(): void{
 }
 
 function cargar_datos_cookie(): void{
-    console.log("Aqui va el desarrollo de las cookies");
+    $inputById("nombre").placeholder = $getCookieByKey("nombre");
+    $inputById("apellidos").placeholder = $getCookieByKey("apellidos");
+    $inputById("edad").placeholder = $getCookieByKey("edad"); 
+    $inputById("telefono").placeholder = $getCookieByKey("telefono");
+    $inputById("fecha_nac").placeholder = $getCookieByKey("fecha_nac");
+    $inputById("url").placeholder = $getCookieByKey("url");
+}
+
+function actualizar_web(): void{
+    window.location.reload();
 }
