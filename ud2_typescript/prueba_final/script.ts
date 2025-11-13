@@ -46,8 +46,11 @@ function add_tarea(): void{
     let tasks = document.getElementById("tasks");
     let task = document.createElement("div");
     
+    let enlace: HTMLAnchorElement = document.createElement("a") as HTMLAnchorElement;
+    enlace.href = "https://wwww.issues.com/" + inputId.value;
     let h2: HTMLHeadElement = document.createElement("h2");
     h2.textContent = "ID Tarea: " + inputId.value;
+    enlace.appendChild(h2);
 
     let pDesc: HTMLParagraphElement = document.createElement("p");
     pDesc.textContent = "Descipción: " + inputDesc.value;
@@ -55,7 +58,7 @@ function add_tarea(): void{
     let pDate: HTMLParagraphElement = document.createElement("p");
     pDate.textContent = "Fecha de creación: " + (new Date().toUTCString);
     
-    task.appendChild(h2);
+    task.appendChild(enlace);
     task.appendChild(pDesc);
     task.appendChild(pDate);
 

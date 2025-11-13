@@ -1,0 +1,30 @@
+# Node.js dependencies
+node_modules/
+
+# Environment files
+.env
+.env.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+dist/
+build/
+
+# macOS system files
+.DS_Store
+
+# IDE / editor settings
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.log
+
+# Package files (no subir)
+package.json
+package-lock.json

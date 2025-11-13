@@ -36,13 +36,16 @@ function add_tarea() {
     var select = document.getElementById("tipo");
     var tasks = document.getElementById("tasks");
     var task = document.createElement("div");
+    var enlace = document.createElement("a");
+    enlace.href = "https://wwww.issues.com/" + inputId.value;
     var h2 = document.createElement("h2");
     h2.textContent = "ID Tarea: " + inputId.value;
+    enlace.appendChild(h2);
     var pDesc = document.createElement("p");
     pDesc.textContent = "Descipción: " + inputDesc.value;
     var pDate = document.createElement("p");
     pDate.textContent = "Fecha de creación: " + (new Date().toUTCString);
-    task.appendChild(h2);
+    task.appendChild(enlace);
     task.appendChild(pDesc);
     task.appendChild(pDate);
     switch (select.value) {
