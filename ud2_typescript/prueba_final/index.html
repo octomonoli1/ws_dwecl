@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard usuario</title>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1 id="titulo"></h1>
+    <form>
+        <label for="id">ID Tarea</label>
+        <input type="number" id="id"><br/>
+        <label for="desc">Descripción</label>
+        <input type="text" id="desc"><br/>
+        <label for="id">Tipo </label>
+        <select id="tipo">
+            <option value="tarea">Tarea</option>
+            <option value="incidencia">Incidencia</option>
+            <option value="evento">Evento</option>
+        </select>
+    </form>
+    <button onclick="add_tarea()">Añadir tarea</button>
+    <button onclick="clean_tareas()">Limpiar tareas</button>
+    <div id="tasks">
+        
+    </div>
+</body>
+</html>
